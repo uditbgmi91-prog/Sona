@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Sona 🤍</title>
+
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff6a88, #ff99ac);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .box {
+      text-align: center;
+      background: rgba(0,0,0,0.25);
+      padding: 35px;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      max-width: 420px;
+      width: 100%;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.7;
+    }
+
+    .couple-pic {
+      width: 170px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin: 15px auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      display: block;
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    button {
+      padding: 14px 30px;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 12px;
+    }
+
+    #yes {
+      background: white;
+      color: #ff4f81;
+      font-weight: bold;
+    }
+
+    #no {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      position: absolute;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 18px;
+      animation: float 6s linear infinite;
+      opacity: 0.9;
+      color: white;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-10vh); }
+    }
+
+    iframe { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Tum Todo Na -->
+  <iframe
+    src="https://www.youtube.com/embed/0yW7w8F2TVA?autoplay=1&loop=1&playlist=0yW7w8F2TVA"
+    allow="autoplay">
+  </iframe>
+
+  <div class="box" id="card">
+    <h1>Rachayita 🤍</h1>
+
+    <img src="us.jpg" alt="Us 🤍" class="couple-pic">
+
+    <p>
+      To my Sona,<br><br>
+      Distance never scared me,<br>
+      because loving you feels certain 🤍
+    </p>
+
+    <h2>Will you be my Valentine?</h2>
+
+    <button id="yes" onclick="yesClicked()">Yes 🤍</button>
+    <button id="no" onmouseover="moveNo()">No 🙈</button>
+  </div>
+
+  <script>
+    const finalText = `
+You are my favourite place to be,
+my favourite person to love,
+and my best decision every day 🤍
+
+Happy Valentine’s Day, Sona 🤍💋
+
+I love you, love you soooo muchhhhhhhh 🤍💋
+    `;
+
+    function yesClicked() {
+      document.body.innerHTML = `
+        <div style="text-align:center; color:white; padding:30px; max-width:500px;">
+          <h1>Sona 🤍</h1>
+          <p id="typedText" style="font-size:1.25em; line-height:1.8; white-space:pre-line;"></p>
+        </div>
+      `;
+      typeWriter();
+    }
+
+    let index = 0;
+    function typeWriter() {
+      if (index < finalText.length) {
+        document.getElementById("typedText").innerHTML += finalText.charAt(index);
+        index++;
+        setTimeout(typeWriter, 45);
+      }
+    }
+
+    function moveNo() {
+      const noBtn = document.getElementById("no");
+      noBtn.style.left = Math.random() * 80 + "vw";
+      noBtn.style.top = Math.random() * 80 + "vh";
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "🤍";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 14 + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
